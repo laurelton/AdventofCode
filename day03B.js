@@ -47,6 +47,18 @@ function getMinMaxSteps(squares) {
     return [minSteps, maxSteps];
 }
 
+function getSteps(minMax, number) {
+    let steps; 
+
+    if (!Array.isArray(minMax)) {
+        throw new Error('Value passed to getSteps MUST be an array!');
+    }
+
+    if (minMax.length != 2) {
+        throw new Error('Array passed to getSteps MUST contain 2 values');
+    }
+}
+
 numbers.forEach((number) => {
     try {
         let steps = getMinMaxSteps(getBoundingSquares(number));
