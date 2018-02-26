@@ -1,4 +1,4 @@
-let numbers = [1, 2, 9, 12, 16, 23, 25, 27, 41, 1024, 312051];
+let numbers = [-1, 0, 1, 3.14, 2, 9, 12, 16, 23, 25, 27, 48, 49, 50, 1024, 312051];
 
 function getBoundingSquares(number) {
     let squares = [];
@@ -21,13 +21,20 @@ function getBoundingSquares(number) {
 function getMinMaxSteps(squares) {
     let minSteps, maxSteps;
 
-    // TODO - error checking on squares: Is it an array, with length equal to 1 or 2, with values in ascending order
+    if (!Array.isArray(squares)) {
+        throw new Error('Value passed to getMinMaxSteps MUST be an array!');
+    }
+
+    if (squares.length < 1 || squares.length > 2) {
+        throw new Error('Array passed to getMinMaxSteps MUST contain 1 or 2 values');
+    }
+
     if (squares.length == 1) {
-        return [0];
+        return [0, 0];
     } else {
-        let minSq = Math.sqrt(squares[0]);
-        let maxSq = Math.sqrt(squares[1]);
-        
+        squares = squares.map(num => Math.sqrt(num));
+        let [minSq, maxSq] = squares.sort((lesser, greater) => lesser - greater);
+
         if (minSq % 2 == 0) {
             maxSteps = minSq;
             minSteps = minSq / 2;
@@ -41,26 +48,10 @@ function getMinMaxSteps(squares) {
 }
 
 numbers.forEach((number) => {
-    // TODO - Implement base case - e.g. 1 = 0 steps
-    // console.log('For the number ' + number + ' the squares are ' + getBoundingSquares(number));
-    let [min, max] = getBoundingSquares(number);
-    let minSq = Math.sqrt(min);
-    let maxSq = Math.sqrt(max);
-    let minSteps, maxSteps;
-
-    if (minSq % 2 == 0) {
-        maxSteps = minSq;
-        minSteps = minSq / 2;
-    } else {
-        minSteps = maxSq / 2;
-        maxSteps = maxSq;
+    try {
+        let steps = getMinMaxSteps(getBoundingSquares(number));
+        console.log(`For ${number} there are between ${steps[0]} and ${steps[1]} steps.`);
+    } catch (error) {
+        console.log(`${number} is not a valid input`);
     }
-
-    console.log(`The number of steps is between ${minSteps} and ${maxSteps} for the number ${number}`);
 });
-
-for (let i = 1; i < 26; i++) {
-    let steps = getMinMaxSteps(getBoundingSquares(i));
-
-    console.log(`For ${i} there are between ${steps[0]} and ${steps[1]} steps.`);
-}
