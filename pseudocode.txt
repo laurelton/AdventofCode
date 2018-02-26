@@ -1,0 +1,14 @@
+####	Part 1
+checksum = 0
+for each line
+    checksum += (max - min)
+
+####	Part 2
+checksum = 0
+for each line
+	for each number
+		for each index greater than the current
+			compare current_number and later_index
+			dividend = bigger number
+			divisor = smaller number
+			if remainder == 0 then add quotient to checksum
