@@ -33,18 +33,18 @@ function getStep(number) {
     let max = roots.filter(number => number % 2 == 0)[0];
     let min = max / 2;
     let startMax = roots[0] % 2 == 0;
-    let stepValue = startMax ? max : max - 1; 
+    let stepValue = startMax ? max : max - 1;
     let numberKey = squares[0] + 1;
 
     for (let i = 0; i < length; i++) {
         allSteps[numberKey] = stepValue;
-        
+
         if (numberKey == number) {
             break;
         }
         numberKey += 1;
-        
-        if (stepValue == min ) {
+
+        if (stepValue == min) {
             addend *= -1;
         }
         stepValue += addend;
