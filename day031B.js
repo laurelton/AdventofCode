@@ -1,6 +1,6 @@
 'use strict';
 
-let numbers = [5, 6, 7, 8, 9, 10, 12, 23, 1024, 312051];
+let numbers = [1, 12, 23, 1024, 312051];
 
 class Vector {
     constructor(x, y) {
@@ -17,7 +17,7 @@ class Vector {
     }
 
     taxiPath(vector) {
-        return (this.x - vector.x) + (this.y - vector.y);
+        return Math.abs(this.x - vector.x) + Math.abs(this.y - vector.y);
     }
 
     equals(vector) {
@@ -30,14 +30,6 @@ let up    = new Vector(0, 1);
 let left  = new Vector(-1, 0);
 let down  = new Vector(0, -1);
 
-// let DIRECTIONS = {
-//     CURRENT: right,
-//     0: right,
-//     1: up,
-//     2: left,
-//     3: down
-// }
-
 let directions = [right, up, left, down];
 let currentDirection = 0;
 let origin = new Vector(0, 0);
@@ -49,7 +41,6 @@ let spiral = {
 };
 
 function changeDirection(currentValue) {
-    // let location = spiral[currentValue];
     currentDirection = (currentDirection + 1) % 4;
 }
 
@@ -79,7 +70,7 @@ numbers.forEach(number => {
                 case up:
                     leftNeighbor = spiral[i].add(left);
                     neighborExists = filledCoordinates.find(elem => {
-                        return elem.equals(upNeighbor);
+                        return elem.equals(leftNeighbor);
                     });
                     if (neighborExists == null) {
                         changeDirection(i);
@@ -88,7 +79,7 @@ numbers.forEach(number => {
                 case left:
                     downNeighbor = spiral[i].add(down);
                     neighborExists = filledCoordinates.find(elem => {
-                        return elem.equals(upNeighbor);
+                        return elem.equals(downNeighbor);
                     });
                     if (neighborExists == null) {
                         changeDirection(i);
@@ -97,7 +88,7 @@ numbers.forEach(number => {
                 case down:
                     rightNeighbor = spiral[i].add(right);
                     neighborExists = filledCoordinates.find(elem => {
-                        return elem.equals(upNeighbor);
+                        return elem.equals(rightNeighbor);
                     });
                     if (neighborExists == null) {
                         changeDirection(i);
