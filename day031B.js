@@ -1,6 +1,7 @@
 'use strict';
 
-let numbers = [1, 12, 23, 1024, 312051];
+// let numbers = [1, 12, 23, 50, 1024, 312051];
+let numbers = [312051];
 
 class Vector {
     constructor(x, y) {
@@ -56,6 +57,16 @@ numbers.forEach(number => {
         } else {
             spiral[i] = spiral[i - 1].add(directions[currentDirection]);
             filledCoordinates.push(spiral[i]);
+            if (Number.isInteger(Math.sqrt(i))) {
+                let rootOfI = Math.sqrt(i);
+                let minRoot = rootOfI - 3;
+                let maxRoot = minRoot + 1;
+                if (minRoot > 0) {
+                    do {
+                        delete spiral[minRoot++];
+                    } while (minRoot < maxRoot * maxRoot);
+                }
+            }
                         
             switch (directions[currentDirection]) {
                 case right:
