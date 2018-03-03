@@ -1,6 +1,13 @@
 // JavaScript
 // ES5
 // Algorithm uses recursive Backtracking. Checks for correct position on subfields, whichs saves a lot position checks. Needs 15.720 position checks for a 8x8 field.
+let size = 4; 
+if (process.argv.length > 2) {
+    size = process.argv[2];
+    if (size < 4 || !Number.isInteger(size)) {
+        size = 4;
+    }
+}
 
 function queenPuzzle(rows, columns) {
     if (rows <= 0) {
@@ -34,7 +41,7 @@ function hasConflict(newRow, newColumn, solution) {
     return false;
 }
 
-let boards = queenPuzzle(4,4);
+let boards = queenPuzzle(size,size);
 console.log(boards);
 
 for (let i = 0; i < boards.length; i++) {
@@ -44,9 +51,9 @@ for (let i = 0; i < boards.length; i++) {
         let line = '';
         for (let k = 0; k < boards[i].length; k++) {
             if (k == queen) {
-                line += '♛|';
+                line += '  ♛  |';
             } else {
-                line += '  󠀠󠀠󠀠|';
+                line += '     |';
             }
         }
         console.log(line);
