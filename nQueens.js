@@ -33,5 +33,22 @@ function hasConflict(newRow, newColumn, solution) {
     }
     return false;
 }
- 
-console.log(queenPuzzle(4,4));
+
+let boards = queenPuzzle(4,4);
+console.log(boards);
+
+for (let i = 0; i < boards.length; i++) {
+    console.log(boards[i]);
+    for (let j = 0; j < boards[i].length; j++) {
+        let queen = boards[i][j];
+        let line = '';
+        for (let k = 0; k < boards[i].length; k++) {
+            if (k == queen) {
+                line += '♛|';
+            } else {
+                line += '  󠀠󠀠󠀠|';
+            }
+        }
+        console.log(line);
+    }
+}
