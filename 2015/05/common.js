@@ -2,7 +2,7 @@
 
 let fs = require('fs');
 let input = fs.readFileSync('./input.txt', 'utf-8');
-let potentialNiceStrings = input.split('\r\n');
+// let potentialNiceStrings = input.split('\r\n');
 
 module.exports = {
     hasThreeVowels: function (word) {
@@ -23,6 +23,14 @@ module.exports = {
 
     containsRepeatedCharcters: function (word) {
         let repeatCharacters = false;
+        let letters = word.split('');
+
+        for (let i = 0; i < letters.length - 1; i++) {
+            if (letters[i] == letters[i + 1]) {
+                repeatCharacters = true;
+                break;
+            }
+        }
 
         return repeatCharacters;
     },
