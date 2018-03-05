@@ -1,6 +1,6 @@
 var assert = require('assert');
-var part1 = require('../A.js');
-var part2 = require('../B.js');
+// var part1 = require('../A.js');
+// var part2 = require('../B.js');
 var common = require('../common.js');
 
 // describe('Array', function () {
@@ -19,7 +19,7 @@ describe('Day 05 part 1', function () {
 		it('should return true', function () {
 			var word = 'ugknbfddgicrmopn';
 			var test = common.hasThreeVowels(word) &&
-				common.containsRepeatedCharcters(word) && 
+				common.containsRepeatedCharacters(word) && 
 				!common.containsForbiddenStrings(word);
 			assert.equal(test, true);
 		});
@@ -34,7 +34,7 @@ describe('Day 05 part 1', function () {
 		it('should return true', function () {
 			var word = 'aaa';
 			var test = common.hasThreeVowels(word) &&
-				common.containsRepeatedCharcters(word) && 
+				common.containsRepeatedCharacters(word) && 
 				!common.containsForbiddenStrings(word);
 			assert.equal(test, true);
 		});
@@ -49,7 +49,7 @@ describe('Day 05 part 1', function () {
 		it('should return false', function () {
 			var word = 'jchzalrnumimnmhp';
 			var test = common.hasThreeVowels(word) &&
-				common.containsRepeatedCharcters(word) && 
+				common.containsRepeatedCharacters(word) && 
 				!common.containsForbiddenStrings(word);
 			assert.equal(test, false);
 		});
@@ -64,7 +64,7 @@ describe('Day 05 part 1', function () {
 		it('should return false', function () {
 			var word = 'haegwjzuvuyypxyu';
 			var test = common.hasThreeVowels(word) &&
-				common.containsRepeatedCharcters(word) && 
+				common.containsRepeatedCharacters(word) && 
 				!common.containsForbiddenStrings(word);
 			assert.equal(test, false);
 		});
@@ -79,7 +79,19 @@ describe('Day 05 part 1', function () {
 		it('should return false', function () {
 			var word = 'dvszwmarrgswjxmb';
 			var test = common.hasThreeVowels(word) &&
-				common.containsRepeatedCharcters(word) && 
+				common.containsRepeatedCharacters(word) && 
+				!common.containsForbiddenStrings(word);
+			assert.equal(test, false);
+		});
+	});
+});
+
+describe('Day 05 part1', function() {
+	describe('xycjvvsuaxsbrqal is naughty because it begins with a forbidden substring.', function() {
+		it('should return false', function() {
+			var word = 'xycjvvsuaxsbrqal';
+			var test = common.hasThreeVowels(word) &&
+				common.containsRepeatedCharacters(word) && 
 				!common.containsForbiddenStrings(word);
 			assert.equal(test, false);
 		});

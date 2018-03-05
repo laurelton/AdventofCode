@@ -4,6 +4,7 @@ let fs = require('fs');
 // let input = fs.readFileSync('./2015/05/input.txt', 'utf-8');
 let input = fs.readFileSync('./input.txt', 'utf-8');
 // let potentialNiceStrings = input.split('\r\n');
+let color = require('colors');
 
 module.exports = {
     hasThreeVowels: function (word) {
@@ -23,7 +24,24 @@ module.exports = {
         return false;
     },
 
-    containsRepeatedCharcters: function (word) {
+    highlightVowels: function (word) {
+        let str = '';
+        let letters = word.split('');
+        let count = 0;
+
+        for (let i = 0; i < letters.length; i++) {
+            if (this.vowels.includes(letters[i])) {
+                count += 1;
+                str += letters[i].yellow;
+            } else {
+                str += letters[i];
+            }
+        }
+
+        return `${str} Vowel Count: ${count}`;
+    },
+
+    containsRepeatedCharacters: function (word) {
         let repeatCharacters = false;
         let letters = word.split('');
 
@@ -37,11 +55,26 @@ module.exports = {
         return repeatCharacters;
     },
 
+    highlightRepeatedCharacters: function (word) {
+        let str = '';
+        let letters = word.split('');
+
+        for (let i = 0; i < letters.length; i++) {
+            if (letters[i] == letters[i + 1] || letters[i] == letters[i - 1]) {
+                str += letters[i].cyan;
+            } else {
+                str += letters[i];
+            }
+        }
+
+        return str;
+    },
+
     containsForbiddenStrings: function (word) {
         // TODO: Change this function to use regular expressions
         for (let i = 0; i < this.excludedSubstrings.length; i++) {
             let str = this.excludedSubstrings[i];
-            if (word.indexOf(str) > 0) {
+            if (word.indexOf(str) >= 0) {
                 return true;
             }
         }
@@ -49,11 +82,30 @@ module.exports = {
         return false;
     },
 
+    highlightForbiddenStrings: function (word) {
+        let str = '';
+        for (let i = 0; i < this.excludedSubstrings.length; i++) {
+            if (word.indexOf(this.excludedSubstrings[i]) >= 0) {
+                let index = word.indexOf(this.excludedSubstrings[i]);
+                let letters = word.split('');
+                for (let j = 0; j < letters.length; j++) {
+                    if (j == index || j == index + 1) {
+                        str += letters[j].red;
+                    } else {
+                        str += letters[j];
+                    }
+                }
+            }
+        }
+
+        return str;
+    },
+
     excludedSubstrings: ['ab', 'cd', 'pq', 'xy'],
 
     vowels: ['a', 'e', 'i', 'o', 'u'],
 
-    inputStrings: function() {
+    inputStrings: function () {
         return input.split('\r\n');
     }
 }
