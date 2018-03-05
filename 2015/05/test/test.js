@@ -17,7 +17,7 @@ var common = require('../common.js');
 describe('Day 05 part 1', function () {
 	describe('ugknbfddgicrmopn is nice because it has three vowels (u...i...o...), a double letter (...dd...), and none of the disallowed substrings.', function () {
 		it('should return true', function () {
-			var word = 'aaa';
+			var word = 'ugknbfddgicrmopn';
 			var test = common.hasThreeVowels(word) &&
 				common.containsRepeatedCharcters(word) && 
 				!common.containsForbiddenStrings(word);
@@ -47,7 +47,7 @@ describe('Day 05 part 1', function () {
 describe('Day 05 part 1', function () {
 	describe('jchzalrnumimnmhp is naughty because it has no double letter.', function () {
 		it('should return false', function () {
-			var word = 'aaa';
+			var word = 'jchzalrnumimnmhp';
 			var test = common.hasThreeVowels(word) &&
 				common.containsRepeatedCharcters(word) && 
 				!common.containsForbiddenStrings(word);
@@ -62,7 +62,7 @@ describe('Day 05 part 1', function () {
 describe('Day 05 part 1', function () {
 	describe('haegwjzuvuyypxyu is naughty because it contains the string xy.', function () {
 		it('should return false', function () {
-			var word = 'aaa';
+			var word = 'haegwjzuvuyypxyu';
 			var test = common.hasThreeVowels(word) &&
 				common.containsRepeatedCharcters(word) && 
 				!common.containsForbiddenStrings(word);
@@ -77,7 +77,7 @@ describe('Day 05 part 1', function () {
 describe('Day 05 part 1', function () {
 	describe('dvszwmarrgswjxmb is naughty because it contains only one vowel.', function () {
 		it('should return false', function () {
-			var word = 'aaa';
+			var word = 'dvszwmarrgswjxmb';
 			var test = common.hasThreeVowels(word) &&
 				common.containsRepeatedCharcters(word) && 
 				!common.containsForbiddenStrings(word);
