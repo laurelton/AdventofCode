@@ -101,6 +101,14 @@ module.exports = {
         return str;
     },
 
+    containsRepeatedPairs: function (word) {
+        return undefined;
+    },
+
+    containsSpacedRepeat: function (word) {
+        return undefined;
+    },
+
     excludedSubstrings: ['ab', 'cd', 'pq', 'xy'],
 
     vowels: ['a', 'e', 'i', 'o', 'u'],
