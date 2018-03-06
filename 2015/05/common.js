@@ -102,11 +102,28 @@ module.exports = {
     },
 
     containsRepeatedPairs: function (word) {
-        return undefined;
+        let letters = word.split('');
+
+        for (let i = 0; i < letters.length - 3; i++) {
+            let subStr = letters[i] + letters[i + 1];
+            if (word.lastIndexOf(subStr) > i + 1) {
+                return true;
+            }
+        }
+
+        return false;
     },
 
     containsSpacedRepeat: function (word) {
-        return undefined;
+        let letters = word.split('');
+
+        for (let i = 0; i < letters.length - 1; i++) {
+            if (letters[i] == letters[i + 2]) {
+                return true;
+            }
+        }
+
+        return false;
     },
 
     excludedSubstrings: ['ab', 'cd', 'pq', 'xy'],

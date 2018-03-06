@@ -3,7 +3,7 @@
 let common = require('./common.js');
 
 let words = common.inputStrings();
-console.log(words.length);
+// console.log(words.length);
 let niceList = [];
 
 let count = 0;

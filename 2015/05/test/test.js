@@ -90,12 +90,25 @@ describe('Day 05 part1', function () {
 });
 
 /**
+ * xycjvvsuaxsbrqal is naughty because it begins with a forbidden substring.
+ */
+describe('Day 05 part1', function () {
+	describe('empty string is naughty because it because it fails all tests.', function () {
+		it('should return false', function () {
+			var word = '';
+			var test = alfaTests(word);
+			assert.equal(test, false);
+		});
+	});
+});
+
+/**
  * qjhvhtzxzqqjkmpb is nice because is has a pair that appears twice (qj) and a letter that repeats with exactly one letter between them (zxz).
  */
 describe('Day 05 part 2', function () {
 	describe('qjhvhtzxzqqjkmpb is nice because is has a pair that appears twice (qj) and a letter that repeats with exactly one letter between them (zxz).', function () {
 		it('should return true', function () {
-			var word = '';
+			var word = 'qjhvhtzxzqqjkmpb';
 			var test = bravoTests(word);
 			assert.equal(test, true);
 		});
@@ -108,7 +121,7 @@ describe('Day 05 part 2', function () {
 describe('Day 05 part 2', function () {
 	describe('xxyxx is nice because it has a pair that appears twice and a letter that repeats with one between, even though the letters used by each rule overlap.', function () {
 		it('should return true', function () {
-			var word = '';
+			var word = 'xxyxx';
 			var test = bravoTests(word);
 			assert.equal(test, true);
 		});
@@ -121,7 +134,7 @@ describe('Day 05 part 2', function () {
 describe('Day 05 part 2', function () {
 	describe('uurcxstgmygtbstg is naughty because it has a pair (tg) but no repeat with a single letter between them.', function () {
 		it('should return false', function () {
-			var word = '';
+			var word = 'uurcxstgmygtbstg';
 			var test = bravoTests(word);
 			assert.equal(test, false);
 		});
@@ -133,6 +146,19 @@ describe('Day 05 part 2', function () {
  */
 describe('Day 05 part 2', function () {
 	describe('ieodomkazucvgmuy is naughty because it has a repeating letter with one between (odo), but no pair that appears twice.', function () {
+		it('should return false', function () {
+			var word = 'ieodomkazucvgmuy';
+			var test = bravoTests(word);
+			assert.equal(test, false);
+		});
+	});
+});
+
+/**
+ * test empty string
+ */
+describe('Day 05 part 2', function () {
+	describe('empty string is naughty because it fails all tests.', function () {
 		it('should return false', function () {
 			var word = '';
 			var test = bravoTests(word);
